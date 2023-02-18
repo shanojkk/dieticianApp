@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "663298362783",
+    "project_id": "ai-dietician-mobile-app",
+    "storage_bucket": "ai-dietician-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663298362783:android:69148e217859e80452c1aa",
+        "android_client_info": {
+          "package_name": "com.OHL1906330.ai_dietician_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663298362783-1sj7f8isi6g9hsfehp9pj9bnpvrlkbvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7jw4wmXVVkQSUwsArqaTjQKOc_B3TQn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663298362783-1sj7f8isi6g9hsfehp9pj9bnpvrlkbvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

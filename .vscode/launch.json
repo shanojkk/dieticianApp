@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [   
+        {
+            "name": "ai_dietician_app",
+            "type": "dart",
+            "request": "launch",
+            "program": "ai_dietician_app/lib/main.dart"
+        },            
+        {
+            "name": "brew_crew",
+            "cwd": "brew_crew",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/screens/main.dart"
+        },
+        {
+            "name": "brew_crew (profile mode)",
+            "cwd": "brew_crew",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "brew_crew (release mode)",
+            "cwd": "brew_crew",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
