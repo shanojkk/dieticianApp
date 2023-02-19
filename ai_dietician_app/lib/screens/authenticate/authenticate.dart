@@ -1,5 +1,5 @@
-import 'package:ai_dietician_app/screens/home/authenticate/login.dart';
-import 'package:ai_dietician_app/screens/home/authenticate/register.dart';
+import 'package:ai_dietician_app/screens/authenticate/login.dart';
+import 'package:ai_dietician_app/screens/authenticate/register.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
