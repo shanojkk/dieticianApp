@@ -1,6 +1,6 @@
 import 'package:ai_dietician_app/models/user.dart';
-import 'package:ai_dietician_app/screens/home/authenticate/authenticate.dart';
-import 'package:ai_dietician_app/screens/home/home/home.dart';
+import 'package:ai_dietician_app/screens/authenticate/authenticate.dart';
+import 'package:ai_dietician_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

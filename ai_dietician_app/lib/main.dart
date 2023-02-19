@@ -1,4 +1,4 @@
-import 'package:ai_dietician_app/screens/home/home/home.dart';
+import 'package:ai_dietician_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
