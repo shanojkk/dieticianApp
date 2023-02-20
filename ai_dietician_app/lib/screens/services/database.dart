@@ -33,5 +33,26 @@ class DatabaseService{
 
 
 
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
+    return UserData(
+      uid : uid,
+      name : snapshot.get('name'),
+      age : snapshot.get('age'),
+      current_weight : snapshot.get('current_weight'),
+      current_height : snapshot.get('current_height'),
+      goal : snapshot.get('goal'),
+      goal_weight: snapshot.get('goal_weight'),
+      date_of_birth: snapshot.get('date_of_birth'),
+      gender :  snapshot.get('gender'),
+      
+      );
+  }
+
+
+  Stream<UserData> get userData {
+    return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+
 }
 
