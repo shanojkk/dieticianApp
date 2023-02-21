@@ -19,7 +19,6 @@ class BtmNavBar extends StatefulWidget {
     
   ];
 
-  List<Widget> get widgetOptions => _widgetOptions;
 
   @override
   State<BtmNavBar> createState() => _BtmNavBarState();
