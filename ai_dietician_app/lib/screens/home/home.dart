@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   Home({super.key});
 
-  final BtmNavBar custNavBar = BtmNavBar();
 
 
   @override
