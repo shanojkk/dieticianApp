@@ -6,6 +6,7 @@ import 'package:ai_dietician_app/screens/insight/insight.dart';
 import 'package:ai_dietician_app/screens/progress/progress.dart';
 import 'package:ai_dietician_app/screens/recipe/recipe.dart';
 import 'package:ai_dietician_app/screens/services/auth.dart';
+import 'package:ai_dietician_app/shared/appBar.dart';
 import 'package:ai_dietician_app/shared/btmNavBar.dart';
 import 'package:flutter/material.dart';
 
@@ -36,23 +37,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        actions: <Widget>[
-          ElevatedButton.icon(
-            onPressed:() async {
-              await _auth.signOut();
-            },
-            icon: Icon(Icons.logout), 
-            label: Text('logout'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.brown[400], 
-              elevation: 0.0
-              ),
-            )
-        ],
-      ),
-
       body: IndexedStack(
         index: _selectedIndex,
         children: Home._widgetOptions,
