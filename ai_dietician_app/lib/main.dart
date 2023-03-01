@@ -1,4 +1,5 @@
 import 'package:ai_dietician_app/models/user.dart';
+import 'package:ai_dietician_app/screens/authenticate/starting/starting.dart';
 import 'package:ai_dietician_app/screens/home/home.dart';
 import 'package:ai_dietician_app/screens/services/auth.dart';
 import 'package:ai_dietician_app/wrapper.dart';
@@ -22,7 +23,7 @@ class DieticianApp extends StatelessWidget {
       value: AuthService().user,            // Setup stream between Flutter App and Firebase
       initialData: null,
       child: MaterialApp(
-        home: Wrapper(),
+        home: Starting(),
       ),
     );
   }
