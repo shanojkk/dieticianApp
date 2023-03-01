@@ -54,5 +54,26 @@ class DatabaseService{
   }
 
 
+   // brew list from snapshot, as QuerySnapshot is passed as parameter here, all streams in this project no longer
+  // listens directly to QuerySnapshot but instead listens to List<Brew>
+  // List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
+  //   return snapshot.docs.map((doc){
+  //     return Brew(
+  //       name: doc.get('name') ?? '',
+  //       sugars: doc.get('sugars') ?? '0',
+  //       strength: doc.get('strength') ?? 0,
+  //       );
+  //   }).toList();
+  // }
+
+  
+  // Stream<List<Brew>> get brews {
+  //   return brewCollection.snapshots()
+  //   .map(_brewListFromSnapshot);  // Return a stream with processed list of brew
+  // }
+
+
+
+
 }
 
