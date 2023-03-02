@@ -13,7 +13,9 @@ import 'package:provider/single_child_widget.dart';
 
 
 class Starting extends StatefulWidget {
-  const Starting({super.key});
+
+  final Function toggleView;
+  Starting({required this.toggleView});
 
   @override
   State<Starting> createState() => _StartingState();
@@ -36,7 +38,22 @@ class _StartingState extends State<Starting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar:AppBar(),
+      appBar:AppBar(
+        backgroundColor: Colors.brown[400],
+        elevation: 0.0,
+        title: Text('Register to AI Dietician'),
+        actions: <Widget> [
+          TextButton.icon(
+            icon: Icon(Icons.person, color: Colors.black),
+            onPressed: () {
+              widget.toggleView();
+            },
+            label: Text("Login", style: TextStyle(color:Colors.black)),
+            ),
+        ]
+      ),
+
+      
       backgroundColor: Colors.green[400],
       body: Column(
         children: <Widget>[
@@ -114,12 +131,12 @@ class _StartingState extends State<Starting> {
 
                 if(goal == Goal.maintain_weight){
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RemainWeightBiodata())
+                    MaterialPageRoute(builder: (context) => RemainWeightBiodata(toggleView: widget.toggleView,))
                   );
                 }
                 else{
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ChgWeightBiodata())
+                    MaterialPageRoute(builder: (context) => ChgWeightBiodata(toggleView: widget.toggleView,))
                   );
                 }
 
