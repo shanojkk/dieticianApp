@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:ai_dietician_app/models/user.dart';
 import 'package:ai_dietician_app/screens/authenticate/starting/starting.dart';
@@ -40,73 +40,107 @@ class _GoalDietState extends State<GoalDiet> {
             ),
       
             SizedBox(height: 20.0,),
-      
-            Card(
-              color: Colors.white,
-              borderOnForeground: true,
-              elevation: 0.0,
-              child: ElevatedButton(
+
+            // Lose Weight
+            ElevatedButton(
                 onPressed: (() {
                   setState(() {
                     widget.goal = Goal.lose_weight;
                   });
                 }),
-                child: Text(
-                  "Lose Weight",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,                
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  child: Text(
+                    "Lose Weight",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,     
+                      color: Colors.white,           
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
+
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[400],
+                  //foregroundColor: Colors.transparent,
+                  //shadowColor: Colors.transparent,
+                ),
+                autofocus: true,
+
+                onFocusChange: ((value) {
+                  
+                }),
               ),
-            ),
+            
 
             SizedBox(height: 20.0,),
-      
-            Card(
-              color: Colors.white,
-              borderOnForeground: true,
-              elevation: 0.0,
-              child: ElevatedButton(
+
+            // Maintain Weight
+            ElevatedButton(
                 onPressed: (() {
                   setState(() {
                     widget.goal = Goal.maintain_weight;
                   });
                 }),
-                child: Text(
-                  "Maintain Weight",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,                
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 10.0),
+                  child: Text(
+                    "Maintain Weight",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,     
+                      color: Colors.white,           
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
+
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[400],
+                  //foregroundColor: Colors.transparent,
+                  //shadowColor: Colors.transparent,
+                ),
+                autofocus: true,
+
+                onFocusChange: ((value) {
+                  
+                }),
               ),
-            ),
 
             SizedBox(height: 20.0,),
-      
-            Card(
-              color: Colors.white,
-              borderOnForeground: true,
-              elevation: 0.0,
-              child: ElevatedButton(
+
+            // Gain Weight
+            ElevatedButton(
                 onPressed: (() {
                   setState(() {
                     widget.goal = Goal.gain_weight;
                   });
                 }),
-                child: Text(
-                  "Gain Weight",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,                
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(22.0, 10.0, 22.0, 10.0),
+                  child: Text(
+                    "Gain Weight",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,     
+                      color: Colors.white,           
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
+
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue[400],
+                  //foregroundColor: Colors.transparent,
+                  //shadowColor: Colors.transparent,
+                ),
+                autofocus: true,
+
+                onFocusChange: ((value) {
+                  
+                }),
               ),
-            ),
 
             SizedBox(height:50.0),
 
