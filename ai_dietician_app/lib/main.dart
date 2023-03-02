@@ -23,7 +23,7 @@ class DieticianApp extends StatelessWidget {
       value: AuthService().user,            // Setup stream between Flutter App and Firebase
       initialData: null,
       child: MaterialApp(
-        home: Starting(),
+        home: Wrapper(),
       ),
     );
   }

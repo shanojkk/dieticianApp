@@ -4,7 +4,7 @@ import 'package:ai_dietician_app/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-
+  
   final Function toggleView;
   Register({required this.toggleView});
 
