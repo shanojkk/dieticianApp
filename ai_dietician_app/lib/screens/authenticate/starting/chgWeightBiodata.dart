@@ -1,12 +1,16 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:ai_dietician_app/models/user.dart';
+import 'package:ai_dietician_app/screens/authenticate/register.dart';
 import 'package:ai_dietician_app/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ChgWeightBiodata extends StatefulWidget {
-  const ChgWeightBiodata({super.key});
+
+  final Function toggleView;
+
+  ChgWeightBiodata({required this.toggleView});
 
   @override
   State<ChgWeightBiodata> createState() => _ChgWeightBiodataState();
@@ -225,7 +229,10 @@ class _ChgWeightBiodataState extends State<ChgWeightBiodata> {
 
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          
+          Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Register(toggleView: widget.toggleView))
+                  );
+           
         },
         child: Text("Next"),
         style: ElevatedButton.styleFrom(
