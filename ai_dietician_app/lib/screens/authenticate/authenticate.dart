@@ -1,5 +1,6 @@
 import 'package:ai_dietician_app/screens/authenticate/login.dart';
 import 'package:ai_dietician_app/screens/authenticate/register.dart';
+import 'package:ai_dietician_app/screens/authenticate/register.dart';
 import 'package:ai_dietician_app/screens/authenticate/starting/starting.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class _AuthenticateState extends State<Authenticate> {
       return Login(toggleView: toggleView,);
     }
     else{
-      return Starting(toggleView: toggleView,);
+      return Register(toggleView: toggleView,);
     }
   }
 }

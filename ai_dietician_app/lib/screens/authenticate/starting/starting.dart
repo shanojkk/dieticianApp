@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:ai_dietician_app/screens/authenticate/starting/chgWeightBiodata.dart';
+import 'package:ai_dietician_app/screens/authenticate/starting/biodataForm.dart';
 import 'package:ai_dietician_app/screens/authenticate/starting/goal.dart';
-import 'package:ai_dietician_app/screens/authenticate/starting/remainWeightBiodata.dart';
 import 'package:ai_dietician_app/screens/authenticate/starting/testGoal.dart';
 import 'package:ai_dietician_app/shared/constant.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +16,15 @@ class Starting extends StatefulWidget {
   final Function toggleView;
   Starting({required this.toggleView});
 
+  // const Starting({super.key});
+
   @override
   State<Starting> createState() => _StartingState();
 }
 
 class _StartingState extends State<Starting> {
 
-  late Goal? goal = null;
+  late Goal goal = Goal.lose_weight;
 
   final GoalDiet goalDiet = GoalDiet();
 
@@ -127,19 +128,11 @@ class _StartingState extends State<Starting> {
               onPressed:() {
                 setState(() {
                   goal = goalDiet.getGoalDiet;
-                });
-
-                if(goal == Goal.maintain_weight){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RemainWeightBiodata(toggleView: widget.toggleView,))
-                  );
-                }
-                else{
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ChgWeightBiodata(toggleView: widget.toggleView,))
-                  );
-                }
-
+                });                
+                  // Navigator.of(context).push (
+                  //   MaterialPageRoute(builder: (context) => BiodataForm(goal: goal))
+                  // );
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => BiodataForm(goal:goal)));                
               },
 
               style:  ElevatedButton.styleFrom(
