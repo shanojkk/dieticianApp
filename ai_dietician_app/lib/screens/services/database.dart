@@ -10,40 +10,49 @@ class DatabaseService{
   final CollectionReference userCollection = FirebaseFirestore.instance.collection('users');
 
   Future updateUserData(
-    String name,
+    String username,
+    String email,
+    String password,
     int age,
-    double current_weight,
-    double current_height,
+    String current_weight,
+    String current_height,
     Goal goal,
-    double goal_weight,
+    String goal_weight,
     DateTime date_of_birth,
     Gender gender
     ) async {
+      
       return await userCollection.doc(uid).set({
-        'name' : name,
+        'username' : username,
+        'email' : email,
+        'password': password,
         'age' : age,
         'current_weight' : current_weight,
         'current_height' : current_height,
-        'goal' : goal,
+        'goal' : goal.toString(),
         'goal_weight' : goal_weight,
         'date_of_birth' : date_of_birth,
-        'gender' : gender,
+        'gender' : gender.toString(),
       });
     }
 
 
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
+
     return UserData(
       uid : uid,
-      name : snapshot.get('name'),
+      username : snapshot.get('username'),
+      email: snapshot.get('email'),
+      password: snapshot.get('password'),
       age : snapshot.get('age'),
       current_weight : snapshot.get('current_weight'),
       current_height : snapshot.get('current_height'),
-      goal : snapshot.get('goal'),
+      goal : Goal.values.firstWhere((e) => e.toString() == snapshot.get('goal'),),
       goal_weight: snapshot.get('goal_weight'),
       date_of_birth: snapshot.get('date_of_birth'),
-      gender :  snapshot.get('gender'),
+      gender :  Gender.values.firstWhere((e) => e.toString() == snapshot.get('gender'),),
+      
       
       );
   }
