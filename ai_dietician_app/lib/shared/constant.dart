@@ -28,15 +28,27 @@ BreadCrumbItem breadCrumbItem = BreadCrumbItem(
 // Regular Expression
 
 // Validate height
-String? validateHeight(String value){
-  String height = r'(^([0-9]{3}$)';
-  RegExp regexHeight = new RegExp(height);
-  if(regexHeight.hasMatch(value)){
-    return 'Please enter valid mobile number';
-  }
-  else if(value.length == 0){
-    return 'Please enter mobile number';
-  }
-  return null;
+bool validateHeightAndWeight(String value){
+ 
+ RegExp regexHeightAndWeight = new RegExp(r'^\d{2,3}$');
+ if(value != null && regexHeightAndWeight.hasMatch(value) && value.length > 0 ){
+  return true;
+ }
+ else{
+  return false;
+ }
+  
 }
 
+// Validate Words
+bool validateWords(String value){
+
+  RegExp regexWord = new RegExp(r'^[a-zA-Z]+$');
+  if(value != null && regexWord.hasMatch(value) && value.length > 0 ){
+  return true;
+  }
+  else{
+    return false;
+  }
+
+}
