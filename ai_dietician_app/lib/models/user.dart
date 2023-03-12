@@ -13,18 +13,22 @@ enum Goal {lose_weight, maintain_weight, gain_weight}
 class UserData{
 
   final String uid;
-  final String name;
+  final String username;
+  final String email;
+  final String password;
   final int age;
-  final double current_weight;
-  final double current_height;
+  final String current_weight;
+  final String current_height;
   final Goal goal;
-  final double goal_weight;
+  final String goal_weight;
   final DateTime date_of_birth;
   final Gender gender;
   
   UserData({
     required this.uid, 
-    required this.name, 
+    required this.username, 
+    required this.email,
+    required this.password,
     required this.age, 
     required this.current_weight,
     required this.current_height,
