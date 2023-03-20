@@ -1,6 +1,8 @@
 import 'package:ai_dietician_app/models/user.dart';
+import 'package:ai_dietician_app/shared/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class DatabaseService{
 
@@ -36,6 +38,13 @@ class DatabaseService{
       });
     }
 
+  
+  Future updateUserSingleData(String dataToUpdate, DatabaseValue updateData) async {    
+    return await userCollection.doc(uid).update({
+      dataToUpdate : updateData.getValue
+    });
+  }
+
 
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
@@ -50,7 +59,7 @@ class DatabaseService{
       current_height : snapshot.get('current_height'),
       goal : Goal.values.firstWhere((e) => e.toString() == snapshot.get('goal'),),
       goal_weight: snapshot.get('goal_weight'),
-      date_of_birth: snapshot.get('date_of_birth'),
+      date_of_birth: snapshot.get('date_of_birth').toDate(),
       gender :  Gender.values.firstWhere((e) => e.toString() == snapshot.get('gender'),),
       
       
