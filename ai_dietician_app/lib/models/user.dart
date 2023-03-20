@@ -10,6 +10,27 @@ class MyUser{
 enum Gender {male, female}
 enum Goal {lose_weight, maintain_weight, gain_weight}
 
+extension GoalParseToString on Goal {
+  String toShortString() {
+    String input = this.toString().split('.').last;
+    String output = input.split('_')
+    .map((word) => word.substring(0,1).toUpperCase() + word.substring(1))
+    .join(' ');
+
+    return output;
+  }
+}
+
+extension GenderParseToString on Gender{
+  String toShortString(){
+    String input = this.toString().split('.').last.replaceAll("_", " ");
+    String output = input.substring(0, 1).toUpperCase() + input.substring(1);
+
+    return output;
+  }
+}
+
+
 class UserData{
 
   final String uid;
