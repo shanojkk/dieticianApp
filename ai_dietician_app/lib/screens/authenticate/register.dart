@@ -220,7 +220,7 @@ class _RegisterState extends State<Register> {
                       
 
                       ),
-                      validator:(value) => !validateWords(value!) ? "Please enter valid name without special characters": null,
+                      validator:(value) => validateWords(value!) ? null : "Please enter valid name without special characters",
                       onChanged: (value) => setState(() {
                         username = value;
                       }),
@@ -303,7 +303,7 @@ class _RegisterState extends State<Register> {
                         });
                       }, 
                       child: Text('Select Date of Birth'),
-                      ),               
+                      ),
 
                     SizedBox(height: 20.0,),
 
@@ -459,9 +459,8 @@ class _RegisterState extends State<Register> {
                               );
             
             
-                            //dynamic result = await _auth.registerWithEmailAndPassword1(email, password);
             
-                              print("register: $result");
+                            print("register: $result");
             
                             if (result==null){
                               setState(() {
@@ -469,12 +468,7 @@ class _RegisterState extends State<Register> {
                                 this.loading = false                ;
                               });
                             }
-                            // else{
-                            //   Authenticate();
-                              
-                            // }
-                            // print(email);
-                            // print(password);
+
                           }
                           
                         },
