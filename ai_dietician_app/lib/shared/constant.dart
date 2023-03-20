@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 
+
 const textInputDecoration = InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
@@ -42,13 +43,25 @@ bool validateHeightAndWeight(String value){
 
 // Validate Words
 bool validateWords(String value){
-
-  RegExp regexWord = new RegExp(r'^[a-zA-Z]+$');
+  print("Validating Words");
+  RegExp regexWord = new RegExp(r'^[A-Za-z]+\s?[A-Za-z]*$');
   if(value != null && regexWord.hasMatch(value) && value.length > 0 ){
   return true;
   }
   else{
     return false;
   }
+
+}
+
+
+
+
+// Generics
+class DatabaseValue<T> {
+  T value;
+  DatabaseValue(this.value);
+
+   T get getValue => value;
 
 }
