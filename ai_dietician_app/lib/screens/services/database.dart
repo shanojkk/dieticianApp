@@ -20,6 +20,7 @@ class DatabaseService{
     String current_height,
     Goal goal,
     String goal_weight,
+    String weight_chg_per_week,
     DateTime date_of_birth,
     Gender gender
     ) async {
@@ -33,6 +34,7 @@ class DatabaseService{
         'current_height' : current_height,
         'goal' : goal.toString(),
         'goal_weight' : goal_weight,
+        'weight_chg_per_week' : weight_chg_per_week,
         'date_of_birth' : date_of_birth,
         'gender' : gender.toString(),
       });
@@ -59,6 +61,7 @@ class DatabaseService{
       current_height : snapshot.get('current_height'),
       goal : Goal.values.firstWhere((e) => e.toString() == snapshot.get('goal'),),
       goal_weight: snapshot.get('goal_weight'),
+      weight_chg_per_week: snapshot.get('weight_chg_per_week'),
       date_of_birth: snapshot.get('date_of_birth').toDate(),
       gender :  Gender.values.firstWhere((e) => e.toString() == snapshot.get('gender'),),
       

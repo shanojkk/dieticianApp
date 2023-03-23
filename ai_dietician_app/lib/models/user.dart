@@ -39,9 +39,10 @@ class UserData{
   final String password;
   final int age;
   final String current_weight;
-  final String current_height;
+  final String current_height;  
   final Goal goal;
   final String goal_weight;
+  final String weight_chg_per_week;
   final DateTime date_of_birth;
   final Gender gender;
   
@@ -55,6 +56,7 @@ class UserData{
     required this.current_height,
     required this.goal,
     required this.goal_weight,
+    required this.weight_chg_per_week,
     required this.date_of_birth,
     required this.gender,
     });
