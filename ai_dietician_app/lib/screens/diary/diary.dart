@@ -39,7 +39,9 @@ class _DiaryState extends State<Diary> {
               onPressed: () async {
                 // Lead to profile page 
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: ((context) => Profile()) 
+                  MaterialPageRoute(
+                    builder: ((context) => Profile()) ,
+                    settings: RouteSettings(name: "Profile")
                 )
                 );
 

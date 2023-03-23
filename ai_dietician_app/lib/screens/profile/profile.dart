@@ -98,7 +98,10 @@ class _ProfileState extends State<Profile> {
                               onTap: () {
                                 // Lead to Profile registration
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: ((context) => PersonalInfo()))
+                                  MaterialPageRoute(
+                                    builder: ((context) => PersonalInfo()),
+                                    settings: RouteSettings(name: "PersonalInfo")
+                                    )
                                 );
                               },
                             ),
@@ -140,7 +143,7 @@ class _ProfileState extends State<Profile> {
 
         }
         else{
-
+          print(snapshot.error);
           return Loading();
 
           // return Scaffold(
