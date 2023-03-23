@@ -454,6 +454,7 @@ class _RegisterState extends State<Register> {
                               height,
                               goal!,
                               goal_weight,
+                              weightChgPerWeek.toString(),
                               date_of_birth,
                               gender,
                               );

@@ -13,10 +13,10 @@ import 'package:provider/single_child_widget.dart';
 
 class Starting extends StatefulWidget {
 
-  final Function toggleView;
-  Starting({required this.toggleView});
+  //final Function toggleView;
+  //Starting({required this.toggleView});
 
-  // const Starting({super.key});
+  const Starting({super.key});
 
   @override
   State<Starting> createState() => _StartingState();
@@ -47,7 +47,7 @@ class _StartingState extends State<Starting> {
           TextButton.icon(
             icon: Icon(Icons.person, color: Colors.black),
             onPressed: () {
-              widget.toggleView();
+              //widget.toggleView();
             },
             label: Text("Login", style: TextStyle(color:Colors.black)),
             ),

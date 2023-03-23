@@ -43,6 +43,7 @@ class AuthService{
     String current_height,
     Goal goal,
     String goal_weight,
+    String weight_chg_per_week,
     DateTime date_of_birth,
     Gender gender
     ) async {
@@ -60,6 +61,7 @@ class AuthService{
                     current_height,
                     goal,
                     goal_weight,
+                    weight_chg_per_week,
                     date_of_birth,
                     gender,
                   );
