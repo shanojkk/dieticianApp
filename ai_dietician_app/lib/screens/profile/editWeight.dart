@@ -13,10 +13,25 @@ class EditWeight extends StatefulWidget {
   Goal goal;
   String currentWeight;
   String goalWeight;
+  String age;
+  Gender gender;
+  String activityFactor;
+  String height;
+  String weightChgPerWeek;
   final user;
   // const EditWeight({super.key});
 
-  EditWeight({required this.goal, required this.currentWeight, required this.goalWeight, required this.user});
+  EditWeight({
+    required this.goal, 
+    required this.currentWeight, 
+    required this.goalWeight, 
+    required this.activityFactor,
+    required this.age,
+    required this.gender,
+    required this.height,
+    required this.weightChgPerWeek,
+    required this.user
+    });
 
   @override
   State<EditWeight> createState() => _EditWeightState();
@@ -357,22 +372,29 @@ class _EditWeightState extends State<EditWeight> {
                               DatabaseValue <String> genericWeightChgPerWeek = DatabaseValue(stateWeightChgPerWeek.toString());
                               DatabaseService(uid: widget.user.uid).updateUserSingleData("weight_chg_per_week", genericWeightChgPerWeek);
 
+                              // Calculate daily calorie intake
+                              double? calorieIntake = calcCalorieIntake(
+                                widget.goal, 
+                                widget.gender, 
+                                widget.age, 
+                                stateWeight.toString(), 
+                                widget.height, 
+                                widget.activityFactor, 
+                                widget.weightChgPerWeek
+                              );
+
+                              if(calorieIntake != null){
+                                DatabaseValue<String> genericCalorieIntake = DatabaseValue(calorieIntake.toString());
+                                DatabaseService(uid: widget.user.uid).updateUserSingleData("daily_calorie_intake", genericCalorieIntake);
+                              }
+
                               // Code here to rearrange diet plan or calculate daily calories ///////////////////////////////////////////////////
 
                               Navigator.of(context).popUntil((route) {
                                 
                                 return route.settings.name == 'PersonalInfo';
                                 
-                              });
-
-                             //Navigator.of(context).pushNamedAndRemoveUntil('PersonalInfo', ModalRoute.withName('Profile'));
-
-                            //  Navigator.of(context).pushAndRemoveUntil(
-                            //   MaterialPageRoute(builder: ((context) {
-                            //     return PersonalInfo();
-                            //   })),
-                            //   ModalRoute.withName("Profile"),
-                            //   );
+                              });                             
 
                             }
       

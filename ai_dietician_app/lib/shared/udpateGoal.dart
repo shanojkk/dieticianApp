@@ -21,11 +21,26 @@ class UpdateGoal extends StatefulWidget {
   Goal goal = Goal.lose_weight;
   String weight;
   String goal_weight;
+  String age;
+  Gender gender;
+  String activityFactor;
+  String height;
+  String weightChgPerWeek;
   final user;
 
   // UpdateGoal({super.key});
 
-  UpdateGoal({required this.goal, required this.weight, required this.goal_weight, required this.user});
+  UpdateGoal({
+    required this.goal, 
+    required this.weight, 
+    required this.goal_weight, 
+    required this.user,
+    required this.age,
+    required this.gender,
+    required this.height,
+    required this.activityFactor,
+    required this.weightChgPerWeek
+    });
 
   @override
   State<UpdateGoal> createState() => _UpdateGoalState();
@@ -213,7 +228,13 @@ class _UpdateGoalState extends State<UpdateGoal> {
                         goal: stateGoal!, 
                         currentWeight: widget.weight,
                         goalWeight: widget.goal_weight,
+                        age: widget.age,
+                        height: widget.height,
+                        gender: widget.gender,
+                        activityFactor: widget.activityFactor,
+                        weightChgPerWeek: widget.weightChgPerWeek,
                         user: widget.user,
+
                         ),
                         
                       )
