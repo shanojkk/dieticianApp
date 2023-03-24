@@ -25,6 +25,7 @@ class _CustomAlertDialogState extends State<CustomAlertDialog> {
   @override
   Widget build(BuildContext context) {
     
+    if(stateValue==null) stateValue = widget.widgetValue;
 
     return Container(      
       child: Form(
