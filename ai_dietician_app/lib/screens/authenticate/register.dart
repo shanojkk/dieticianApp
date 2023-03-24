@@ -1,5 +1,5 @@
 
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:ai_dietician_app/models/user.dart';
 import 'package:ai_dietician_app/screens/authenticate/authenticate.dart';
@@ -66,7 +66,9 @@ class _RegisterState extends State<Register> {
   String weight = "";
   Goal? goal = null;
   String goal_weight = "";
-  double weightChgPerWeek = 0.0;
+  double weightChgPerWeek = 0.5;
+  double activityFactor = 1.7;
+  double dailyCalorieIntake = 0.0;
 
   bool selected1 = false;
   bool selected2 = false;
@@ -354,6 +356,57 @@ class _RegisterState extends State<Register> {
                       }),
                     ),
 
+                    SizedBox(height: 20.0),
+
+                    // Physical Activity Level                               
+                    DropdownButtonFormField(                    
+                        decoration: textInputDecoration.copyWith(
+                          labelText: "Activity Level",
+                          labelStyle: TextStyle(backgroundColor: Colors.white),
+                          errorMaxLines: 2
+                          //counterStyle: TextStyle(overflow: TextOverflow.clip)
+                        ),
+                        isExpanded: true,
+                        value: 1.3,
+                        items: <DropdownMenuItem<double>>[
+                          DropdownMenuItem(
+                            value: 1.1,
+                            child: Text('Inactive - Patient with limited physical mobility',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                          DropdownMenuItem(
+                            value: 1.2,
+                            child: Text('Sedentary - Little to no exercise',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                          DropdownMenuItem(
+                            value: 1.3,
+                            child: Text('Light Exercise - 1 to 3 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                          DropdownMenuItem(
+                            value: 1.5,
+                            child: Text('Moderate Exercise - 3 to 5 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                          DropdownMenuItem(
+                            value: 1.7,
+                            child: Text('Heavy Exercise - 6 to 7 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                          DropdownMenuItem(
+                            value: 1.9,
+                            child: Text('Very Heavy Exercise - twice per day / extra heavy workouts',maxLines: 2, overflow: TextOverflow.fade),
+                            alignment: AlignmentDirectional.centerStart,
+                          ),
+                        ], 
+                        onChanged: ((value) => setState(() {
+                          activityFactor = value!;
+                          
+                          })
+                        ),
+                        ),
+
                     SizedBox(height: 20.0,),
 
                       // Goal Weight
@@ -426,6 +479,7 @@ class _RegisterState extends State<Register> {
                           })
                         ),
                         ),
+                                            
                         
                     SizedBox(height: 20.0),
 
@@ -437,7 +491,28 @@ class _RegisterState extends State<Register> {
                           style: TextStyle(color: Colors.white),
                           ),
                         onPressed: () async {
-            
+                          double? calorieIntake = calcCalorieIntake(
+                                                                    goal!, 
+                                                                    gender, 
+                                                                    age.toString(), 
+                                                                    weight, 
+                                                                    height, 
+                                                                    activityFactor.toString(), 
+                                                                    weightChgPerWeek.toString()
+                                                                    );
+
+                          if (calorieIntake != null){
+                            setState(() {
+                              dailyCalorieIntake = calorieIntake;
+                            });
+                          }
+                          else{
+                            setState(() {
+                              dailyCalorieIntake = 0.0;
+                            });
+                          }
+                          
+
                           // Checking whether if all validators are having null value (pass validations)
                           if(_formKey.currentState!.validate()){    
                             
@@ -457,6 +532,8 @@ class _RegisterState extends State<Register> {
                               weightChgPerWeek.toString(),
                               date_of_birth,
                               gender,
+                              activityFactor.toString(),
+                              dailyCalorieIntake.toString(),
                               );
             
             
