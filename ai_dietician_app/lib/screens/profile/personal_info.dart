@@ -23,6 +23,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   final _formKey  = GlobalKey<FormState>();
   final homeNavigatorKey = GlobalKey<NavigatorState>();
+  final _focusNode = FocusNode();
 
   String? username;
   int? age; 
@@ -32,12 +33,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
   String? weight;
   Goal? goal;
   String? goal_weight;
+  String? activityFactor;
   double? weightChgPerWeek;
 
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<MyUser>(context);    
+    final user = Provider.of<MyUser>(context);
 
     return StreamBuilder<UserData>(
     
@@ -50,6 +52,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           
           UserData userData = snapshot.data as UserData;
           goal = userData.goal;
+          activityFactor = userData.activityFactor;
           
           return Scaffold(
             backgroundColor: Colors.grey[300],              
@@ -382,6 +385,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   goal: goal!,
                                   weight: userData.current_weight,
                                   goal_weight: userData.goal_weight,
+                                  age: age.toString(),
+                                  gender: gender!,
+                                  activityFactor: activityFactor!,
+                                  height: height.toString(),
+                                  weightChgPerWeek: weightChgPerWeek.toString(),
                                   user: user,
                                   ),                                  
 
@@ -574,6 +582,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
     
                                 DatabaseValue <DateTime> genericDate = DatabaseValue(newDate);
                                 DatabaseService(uid: user.uid).updateUserSingleData("date_of_birth", genericDate);
+
+                                DatabaseValue <String> genericAge = DatabaseValue(age.toString());
+                                DatabaseService(uid: user.uid).updateUserSingleData("age", genericAge);
     
                               }
                               else return;
@@ -608,6 +619,65 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               }
     
                             },
+                          ),
+
+                          Divider(thickness: 2.0, indent: 12.0, endIndent: 12.0,),
+    
+                          // Physical Activity Level / Activity Factor
+                          ListTile(
+                            leading: Text("Activity Level", style: TextStyle(fontSize: 18.0)),
+                            title: DropdownButtonFormField(
+                                      focusNode: _focusNode,
+                                      dropdownColor: Colors.amber,                 
+                                      decoration: textInputDecoration.copyWith(
+                                        // labelText: "Activity Level",
+                                        labelStyle: TextStyle(backgroundColor: Colors.white),                                        
+                                      ),
+                                      isExpanded: true,
+                                      value: double.parse(activityFactor!),
+                                      items: <DropdownMenuItem<double>>[
+                                        DropdownMenuItem(
+                                          value: 1.1,
+                                          child: Text('Inactive - Patient with limited physical mobility',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1.2,
+                                          child: Text('Sedentary - Little to no exercise',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1.3,
+                                          child: Text('Light Exercise - 1 to 3 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1.5,
+                                          child: Text('Moderate Exercise - 3 to 5 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1.7,
+                                          child: Text('Heavy Exercise - 6 to 7 days per week',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1.9,
+                                          child: Text('Very Heavy Exercise - twice per day / extra heavy workouts',maxLines: 2, overflow: TextOverflow.fade),
+                                          alignment: AlignmentDirectional.centerStart,
+                                        ),
+                                      ], 
+                                      onChanged:(value) {
+                                        setState(() {
+                                          activityFactor = value.toString();                                        
+                                        });
+
+                                        DatabaseValue<String> genericActivityFactor = DatabaseValue(activityFactor!);
+                                        DatabaseService(uid: user.uid).updateUserSingleData("activity_factor", genericActivityFactor);
+
+                                      }, 
+                                      ),
+                            
                           ),
                 
                
