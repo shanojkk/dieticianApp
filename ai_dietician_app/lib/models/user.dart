@@ -45,6 +45,8 @@ class UserData{
   final String weight_chg_per_week;
   final DateTime date_of_birth;
   final Gender gender;
+  final String activityFactor;
+  final String dailyCalorieIntake;
   
   UserData({
     required this.uid, 
@@ -59,5 +61,7 @@ class UserData{
     required this.weight_chg_per_week,
     required this.date_of_birth,
     required this.gender,
+    required this.activityFactor,
+    required this.dailyCalorieIntake,
     });
 }

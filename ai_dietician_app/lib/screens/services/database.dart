@@ -22,7 +22,9 @@ class DatabaseService{
     String goal_weight,
     String weight_chg_per_week,
     DateTime date_of_birth,
-    Gender gender
+    Gender gender,
+    String activityFactor,
+    String dailyCalorieIntake,
     ) async {
       
       return await userCollection.doc(uid).set({
@@ -37,6 +39,8 @@ class DatabaseService{
         'weight_chg_per_week' : weight_chg_per_week,
         'date_of_birth' : date_of_birth,
         'gender' : gender.toString(),
+        'activity_factor': activityFactor,
+        'daily_calorie_intake': dailyCalorieIntake,
       });
     }
 
@@ -64,6 +68,8 @@ class DatabaseService{
       weight_chg_per_week: snapshot.get('weight_chg_per_week'),
       date_of_birth: snapshot.get('date_of_birth').toDate(),
       gender :  Gender.values.firstWhere((e) => e.toString() == snapshot.get('gender'),),
+      activityFactor: snapshot.get("activity_factor"),
+      dailyCalorieIntake: snapshot.get("daily_calorie_intake"),
       
       
       );

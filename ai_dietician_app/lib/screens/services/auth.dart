@@ -45,7 +45,9 @@ class AuthService{
     String goal_weight,
     String weight_chg_per_week,
     DateTime date_of_birth,
-    Gender gender
+    Gender gender,
+    String activityFactor,
+    String dailyCalorieIntake,
     ) async {
               try{
                 UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -64,6 +66,8 @@ class AuthService{
                     weight_chg_per_week,
                     date_of_birth,
                     gender,
+                    activityFactor,
+                    dailyCalorieIntake,
                   );
                 print("register2: $user");
 
